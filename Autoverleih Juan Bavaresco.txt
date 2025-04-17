@@ -1,0 +1,10 @@
+﻿AUTOVERLEIH - Juan Bavaresco
+
+This project is a simple backend prototype for a car rental system, currently focused on customer management so far. 
+
+My main goal, when starting it, was to test new frameworks and database systems I hadn’t used before. Coming from C++, a language that may not be ideal for quick prototyping, I wanted to test using Python and its flexibility to iterate quickly.
+
+Initially I intended to explore working with NoSQL databases, specifically MongoDB. I chose MongoDB because I wanted to try a flexible schema database that can be expandable, that works well with big datasets, and that also combines well with JSON-based APIs.
+The backend is written in Python using FastAPI, mainly for its usage of Python type hints and the usage of Pydantic models, similar to C++ structs. FastAPI also fits well with my original idea of creating the frontend using C++ and Qt because of its asynchronous nature.
+
+Ideally, the frontend / GUI would have been developed on Qt using C++, but for time constraints, a quick HTML was created to be able to showcase some of the functionality.
