@@ -1,6 +1,23 @@
 # autoverleih
 Car rental management application, supporting customer and car management, and rental operations
 
-Installing MongoDB Driver
-python3.13 -m pip install "pymongo[srv]"
+## Stack used
+
+- **Backend:** FastAPI
+- **Database:** MongoDB
+- **Frontend:** HTML
+
+## ▶How to Run
+> Requires Python 3.9+ and MongoDB (local or Atlas).
+
+```bash
+python -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Start FastAPI server
+uvicorn app.main:app --reload
+
 

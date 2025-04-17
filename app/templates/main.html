@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer</title>
+</head>
+<body>
+  <h1>Customer</h1>
+
+  <h2>Create Customer</h2>
+  <form id="customerCreateForm">
+    <label for="name">Name: </label><input type="text" id="name" placeholder="Name" required><br><br>
+    <label for="email">Email: </label><input type="email" id="email" placeholder="Email" required><br><br>
+    <button type="submit">Create</button>
+  </form>
+  <br><br>
+
+  <h2>Get Customer by ID</h2>
+  <form id="customerGetForm">
+    <label for="getCustomerId">Customer ID: </label><input type="text" id="getCustomerId" placeholder="Customer ID" required><br><br>
+    <button type="submit">Get Customer</button>
+  </form>
+
+  <script>
+    // Creating customer
+    const createForm = document.getElementById("customerCreateForm");
+    createForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const response = await fetch("http://localhost:8000/customers/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value
+        })
+      });
+
+      const result = await response.json();
+      alert("Created customer with ID: " + result.id);
+    });
+
+    // Getting customer by ID
+    const getForm = document.getElementById("customerGetForm");
+    getForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const customerId = document.getElementById("getCustomerId").value;
+
+      const response = await fetch(`http://localhost:8000/customers/${customerId}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" }
+      });
+
+      if (response.ok) {
+        const customer = await response.json();
+        alert(`Customer found: ${customer.name}, ${customer.email}`);
+      } else {
+        alert("Customer not found");
+      }
+    });
+  </script>
+</body>
+</html>
